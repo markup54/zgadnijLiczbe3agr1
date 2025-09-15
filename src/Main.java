@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
 
@@ -25,6 +27,18 @@ public class Main {
         char znak = 'a';
 
 
-        //
+        /*
+        Napisz program w którym wylosujesz liczbą z zakresu od 1 do 100
+        Wpiszesz liczbe z klawiatury
+        Powiesz czy ktoś zgadł wylosowaną
+         */
+        int wylosowanaLiczba =(int)(Math.random()*100)+1;
+        System.out.println("Wylosowano "+wylosowanaLiczba);
+
+        //wczytywanie liczby z klawiatury
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj liczbę ");
+        int zgadywanaLiczba = scanner.nextInt();
+        System.out.println("Wpisano "+zgadywanaLiczba);
     }
 }
