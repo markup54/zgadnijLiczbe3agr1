@@ -1,138 +1,62 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-
-
     public static void main(String[] args) {
-        //tu program główny
-        System.out.println("Dzień dobry");
-
-        //typy proste
-        //pisane z małej litery, zmienne a nie obiekty -> nie mają pól i metod
-        //typy całkowite
-        byte liczba1 = 100;
-        short liczba2 = 300;
-        int liczba3 = 1234576;
-        long liczba4 = 612564527;
-        System.out.println("Twoja liczba " + liczba1);
-
-        //typy zmiennoprzecinkowe, rzeczywiste , z ułamkiem
-        float liczbaRzeczywista1 = 3.14f;//musi być na końcu f
-        double liczbaRzeczywista2 = 23.456789;
-        System.out.println("Liczba rzeczywista " + liczbaRzeczywista2);
-
-        //typ logiczny
-        boolean czyPrawda = true; //może być też false
-        //typ znakowy
-        char znak = 'a';
-
-
-        /*
-        Napisz program w którym wylosujesz liczbą z zakresu od 1 do 100
-        Wpiszesz liczbe z klawiatury
-        Powiesz czy ktoś zgadł wylosowaną
-         */
-        int wylosowanaLiczba = (int) (Math.random() * 100) + 1;
-        System.out.println("Wylosowano " + wylosowanaLiczba);
-
-        //wczytywanie liczby z klawiatury
+        //Wypisz wszystkie liczby dwucyfrowe parzyste
+        System.out.println("Liczby dwucyfrowe  parzyste");
+        for (int i = 10; i < 100; i=i+2) {
+            System.out.print(i+", ");
+        }
+        System.out.println();
+        //Zapytaj użytkownika ile chce gwiazdek i tyle mu napisz *
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj liczbę ");
-        int zgadywanaLiczba = scanner.nextInt();
-        System.out.println("Wpisano " + zgadywanaLiczba);
-        //instrukcja warunkowa
-        if (wylosowanaLiczba == zgadywanaLiczba) {
-            System.out.println("Brawo trafione");
-        } else {
-            System.out.println("Moze nastepnym razem");
+        System.out.println("Ile chcesz gwaizdek?");
+        int liczbaGwiazdek = scanner.nextInt();
+        for (int i = 0; i < liczbaGwiazdek; i++) {
+            System.out.print("*");
         }
-        int roznica;
-        if (wylosowanaLiczba > zgadywanaLiczba) {
-            roznica = wylosowanaLiczba - zgadywanaLiczba;
-        } else {
-            roznica = zgadywanaLiczba - wylosowanaLiczba;
+        System.out.println();
+        //Poproś uzytkownika o zero i wczytuj liczby tak długo aż będzie zero
+        int liczbaWpisana;
+        do{
+            System.out.println("Podaj zero");
+            liczbaWpisana = scanner.nextInt();
+        }while (liczbaWpisana!=0);
+        //Oblicz sumę wszystkich liczb od a do b
+        //a i b wczytane z klawiatury
+
+        int sumaLiczbOdAdoB = 0;
+        System.out.println("Podaj pierwszą liczbę");
+        int a = scanner.nextInt();
+        System.out.println("Podaj druga liczbę");
+        int b = scanner.nextInt();
+        if(a<b){
+        for (int i = a; i <=b ; i++) {
+            sumaLiczbOdAdoB+=i;
         }
-        //wyrazenie warunkowe -> zwraca wartosc
-        roznica = zgadywanaLiczba > wylosowanaLiczba ? zgadywanaLiczba - wylosowanaLiczba : wylosowanaLiczba - zgadywanaLiczba;
-        roznica = roznica / 10; // dzielenie całkowite -> wynik całkowite bo dzielimy dwie liczby całkowite
-
-        //instrukcja wyboru
-        switch (roznica) {
-            case 0:
-                System.out.println("Bardzo blisko");
-                break;
-            case 1:
-                System.out.println("Dość blisko");
-                break;
-            case 2:
-                System.out.println("Nie najgorzej");
-                break;
-            default:
-                System.out.println("Sprobuj innym razem");
-
+        }
+        else {
+            for (int i = a; i >=b ; i--) {
+                sumaLiczbOdAdoB+=i;
+            }
         }
 
-        //wyrażenie switch
-        //zwraca wartosć
-        System.out.println(
-                switch (roznica){
-                    case 0 -> "Bardzo blisko";
-                    case 1 -> "Dość blisko";
-                    case 2 -> "Nie najgorzej";
-                    default -> "Sprobuj innym razem";
-                }
-        );
+        System.out.println("Suma liczb wynosi "+sumaLiczbOdAdoB);
 
-        //zgadywanie 10 razy
-        Random random = new Random();
-        wylosowanaLiczba = random.nextInt(1,101);
-
-        for (int i = 0; i < 10; i++) {
-            //dla każdego
-            System.out.println("Zgadnij liczbę");
-            zgadywanaLiczba = scanner.nextInt();
-            if(zgadywanaLiczba == wylosowanaLiczba){
-                System.out.println("Gratulacje to jest ta liczba");
-                break;
-            }
-            if(zgadywanaLiczba>wylosowanaLiczba){
-                System.out.println("Wpisano za dużo");
-            }
-            else {
-                System.out.println("Wpisano za mało");
+        //czy liczba pierwsza
+        boolean czyPierwsza = true;
+        int liczba =scanner.nextInt();
+        for (int i = 2; i < liczba; i++) {
+            if(liczba%i ==0){
+                czyPierwsza = false;
             }
         }
-        //zgadnij liczbę ->
-        //dopóki nie zgadniesz to krążymy w pętli
-        wylosowanaLiczba = random.nextInt(1,101);
-        System.out.println("|Uwaga losowanie nowej liczby z zakreus 1,100");
-        System.out.println("Podaj liczbę");
-        zgadywanaLiczba = scanner.nextInt();
-        while (wylosowanaLiczba != zgadywanaLiczba){
-            if(zgadywanaLiczba>wylosowanaLiczba){
-                System.out.println("Wpisano za dużo");
-            }
-            else {
-                System.out.println("Wpisano za mało");
-            }
-            System.out.println("Podaj liczbę");
-            zgadywanaLiczba = scanner.nextInt();
+        if(czyPierwsza){
+            System.out.println("to liczba pierwsza");
         }
-        System.out.println("Kolejna gra losujemy nową liczbę");
-        wylosowanaLiczba = random.nextInt(1,101);
-        //dry don't repeat yourself
-        do {
+        else{
+            System.out.println("liczba złozona");
+        }
 
-            System.out.println("Podaj liczbę");
-            zgadywanaLiczba = scanner.nextInt();
-            if(zgadywanaLiczba != wylosowanaLiczba) {
-                if (zgadywanaLiczba > wylosowanaLiczba) {
-                    System.out.println("Wpisano za dużo");
-                } else {
-                    System.out.println("Wpisano za mało");
-                }
-            }
-        }while (zgadywanaLiczba != wylosowanaLiczba);
     }
 }
