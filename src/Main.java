@@ -57,6 +57,21 @@ public class Main {
         else{
             System.out.println("liczba złozona");
         }
-
+        int wynik = suma(2,6);
+        System.out.println(wynik);
+        wypiszLiczbyDwucyfroweParzyste();
     }
+
+    private static int suma(int a,int b){
+        return a+b;
+    }
+
+    private static void wypiszLiczbyDwucyfroweParzyste(){
+        System.out.println("Liczby dwucyfrowe  parzyste");
+        for (int i = 10; i < 100; i=i+2) {
+            System.out.print(i+", ");
+        }
+    }
+
+
 }
