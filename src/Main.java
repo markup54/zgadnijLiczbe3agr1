@@ -121,7 +121,18 @@ public class Main {
         }
         System.out.println("Kolejna gra losujemy nową liczbę");
         wylosowanaLiczba = random.nextInt(1,101);
+        //dry don't repeat yourself
+        do {
 
-
+            System.out.println("Podaj liczbę");
+            zgadywanaLiczba = scanner.nextInt();
+            if(zgadywanaLiczba != wylosowanaLiczba) {
+                if (zgadywanaLiczba > wylosowanaLiczba) {
+                    System.out.println("Wpisano za dużo");
+                } else {
+                    System.out.println("Wpisano za mało");
+                }
+            }
+        }while (zgadywanaLiczba != wylosowanaLiczba);
     }
 }
