@@ -89,6 +89,7 @@ public class Main {
         wylosowanaLiczba = random.nextInt(1,101);
 
         for (int i = 0; i < 10; i++) {
+            //dla każdego
             System.out.println("Zgadnij liczbę");
             zgadywanaLiczba = scanner.nextInt();
             if(zgadywanaLiczba == wylosowanaLiczba){
@@ -102,6 +103,25 @@ public class Main {
                 System.out.println("Wpisano za mało");
             }
         }
+        //zgadnij liczbę ->
+        //dopóki nie zgadniesz to krążymy w pętli
+        wylosowanaLiczba = random.nextInt(1,101);
+        System.out.println("|Uwaga losowanie nowej liczby z zakreus 1,100");
+        System.out.println("Podaj liczbę");
+        zgadywanaLiczba = scanner.nextInt();
+        while (wylosowanaLiczba != zgadywanaLiczba){
+            if(zgadywanaLiczba>wylosowanaLiczba){
+                System.out.println("Wpisano za dużo");
+            }
+            else {
+                System.out.println("Wpisano za mało");
+            }
+            System.out.println("Podaj liczbę");
+            zgadywanaLiczba = scanner.nextInt();
+        }
+        System.out.println("Kolejna gra losujemy nową liczbę");
+        wylosowanaLiczba = random.nextInt(1,101);
+
 
     }
 }
